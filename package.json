@@ -1,0 +1,23 @@
+{
+  "name": "bus_sizes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/volkmar-carrillo/aws-api-gateway-bus-sizes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/volkmar-carrillo/aws-api-gateway-bus-sizes/issues"
+  },
+  "homepage": "https://github.com/volkmar-carrillo/aws-api-gateway-bus-sizes#readme",
+  "devDependencies": {
+    "serverless-offline": "^12.0.4"
+  }
+}
