@@ -11,7 +11,8 @@ function canTransport([head, ...tail], busSize) {
   for (let i = 0; i < tail.length; i++) {
     sum += tail[i];
     if (sum > busSize) {
-      return false; // el grupo actual no puede ser transportado en este autobús sin cambiar su posición relativa
+      // The current group cannot be transported without changing its relative position
+      return false;
     } else if (sum === busSize) {
       sum = 0;
     }
@@ -21,21 +22,19 @@ function canTransport([head, ...tail], busSize) {
 
 function getBusSizes(groups) {
   groups = stringToArrayNumbers(groups);
-  const totalPeople = sumArray(groups); // total de personas en todos los grupos
+  const totalPeople = sumArray(groups);
   const sizes = [];
 
   for (let i = 1; i <= totalPeople; i++) {
-    if (totalPeople % i === 0) { // si es divisor de totalPeople, es una opción válida para x
+    // If divisor of totalPeople is a valid option of x
+    if (totalPeople % i === 0) {
       if (canTransport(groups, i)) {
         sizes.push(i);
       }
     }
   }
-
+  // Array numbers to string
   return sizes.join(",");
 }
 
-module.exports = {
-  stringToArrayNumbers,
-  getBusSizes,
-};
+module.exports = {getBusSizes};
