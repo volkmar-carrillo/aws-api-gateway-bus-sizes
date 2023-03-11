@@ -1,18 +1,36 @@
 'use strict';
 
-async function sizes(event) {
-  const data = JSON.parse(event.body);
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        message: 'Datos recibidos - OK 💯',
-        input: `Groups: ${data.groups}`,
-      },
-      null,
-      2
-    ),
-  };
-}
+const {getBusSizes} = require('./services/sizes.service');
 
-module.exports = { sizes };
+const sizes = async (event) => {
+  let response;
+  try {
+    const sizes = getBusSizes(JSON.parse(event.body).groups);
+    response = {
+      statusCode: 200,
+      body: JSON.stringify(
+        {
+          sizes: sizes
+        },
+        null,
+        2
+      ),
+    };
+
+  } catch (error) {
+    console.error('Error:', error);
+    response = {
+      statusCode: 400,
+      body: JSON.stringify(
+        {
+          error: error.message
+        },
+        null,
+        2
+      ),
+    };
+  }
+  return response;
+};
+
+module.exports = {sizes}
