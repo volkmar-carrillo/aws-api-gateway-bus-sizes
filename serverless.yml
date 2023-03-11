@@ -24,6 +24,8 @@ provider:
   name: aws
   runtime: nodejs12.x
   region: us-east-1
+  apiGateway:
+    shouldStartNameWithService: true
 
 # you can overwrite defaults here
 #  stage: dev
@@ -60,8 +62,12 @@ provider:
 #    - include-me-dir/**
 
 functions:
-  hello:
-    handler: handler.hello
+  getBusSizes:
+    handler: handler.getBusSizes
+    events:
+      - http:
+          method: GET
+          path: /sizes
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
