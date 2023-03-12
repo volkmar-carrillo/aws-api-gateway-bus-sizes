@@ -4,7 +4,7 @@
 
 Usando una función **AWS Lambda** ***(hecha en Java o Node.js)*** la cual se debe exponer como **Api REST** a través del servicio **AWS Api Gateway**, resuelva el siguiente problema:
 
-Hay ${n}$ grupos de amigos y cada grupo es numerado de ${1}$ a ${n}$. El ${n}$ grupo contiene ${a}_{i}$ personas.
+Hay ${n}$ grupos de amigos y cada grupo es numerado de ${1}$ a ${n}$. El ${n}$ grupo contiene ${a_i}$ personas.
 
 Todos viven cerca de una parada de bus, y solo un bus funciona en esa ruta. El bus vacío llega a la parada y todos los grupos quieren viajar en ese bus. Sin embargo, cada grupo de amigos no quiere separarse. Así que entran al bus solo si el bus puede llevar a todo el grupo.
 
@@ -30,15 +30,15 @@ Encuentre todos los posibles tamaños de ${x}$ del bus para que pueda transporta
 
 Para el ejemplo de **Request** y **Response** anterior, la lógica usada es la siguiente:
 
-- Se tiene como entrada los grupos ${a}_{1} = 1$, ${a}_{2} = 2$, ${a}_{3} = 1$, ${a}_{4} = 1$, ${a}_{5} = 1$, ${a}_{6} = 2$, ${a}_{7} = 1$, ${a}_{8} = 3$
+- Se tiene como entrada los grupos ${a_1} = 1$, ${a_2} = 2$, ${a_3} = 1$, ${a_4} = 1$, ${a_5} = 1$, ${a_6} = 2$, ${a_7} = 1$, ${a_8} = 3$
 
-- Si ${x} = 1$, en el primer viaje ${a}_{1}$ va en el bus, sin embargo, no puede hacer un segundo viaje, porque el grupo ${a}_{2}$ tiene 2 personas y el bus una capacidad para una. De acuerdo con lo anterior, el valor ${x} = 1$ no puede hacer parte de la respuesta.
+- Si ${x} = 1$, en el primer viaje ${a_1}$ va en el bus, sin embargo, no puede hacer un segundo viaje, porque el grupo ${a_2}$ tiene 2 personas y el bus una capacidad para una. De acuerdo con lo anterior, el valor ${x} = 1$ no puede hacer parte de la respuesta.
   
-- Si ${x} = 2$, no será posible hacer el primer viaje, porque tendría que transportar a los grupos ${a}_{1}$ y ${a}_{2}$ como mínimo, y solo tiene capacidad para 2 personas, y si solo transporta al grupo ${a}_{1}$ entonces quedaría una silla vacía. De acuerdo con lo anterior, el valor ${x} = 2$ no puede hacer parte de la respuesta.
+- Si ${x} = 2$, no será posible hacer el primer viaje, porque tendría que transportar a los grupos ${a_1}$ y ${a_2}$ como mínimo, y solo tiene capacidad para 2 personas, y si solo transporta al grupo ${a_1}$ entonces quedaría una silla vacía. De acuerdo con lo anterior, el valor ${x} = 2$ no puede hacer parte de la respuesta.
 
-- Si ${x} = 3$, el primer viaje sería con los grupos ${a}_{1}$ y ${a}_{2}$, el segundo viaje con ${a}_{3}$, ${a}_{4}$ y ${a}_{5}$, el tercer viaje con ${a}_{6}$ y ${a}_{7}$ y finalmente el cuarto viaje lo hace con el grupo ${a}_{8}$. De acuerdo con esto, ${x} = 3$ sí es una posible respuesta y debe ir como parte de la salida del servicio **REST**.
+- Si ${x} = 3$, el primer viaje sería con los grupos ${a_1}$ y ${a_2}$, el segundo viaje con ${a_3}$, ${a_4}$ y ${a_5}$, el tercer viaje con ${a_6}$ y ${a_7}$ y finalmente el cuarto viaje lo hace con el grupo ${a_8}$. De acuerdo con esto, ${x} = 3$ sí es una posible respuesta y debe ir como parte de la salida del servicio **REST**.
 
-- Sí ${x} = 4$, el primer viaje será con los grupos con ${a}_{1}$, ${a}_{2}$ y ${a}_{3}$, el segundo viaje será con ${a}_{4}$, ${a}_{5}$ y ${a}_{6}$ y finalmente el tercer viaje será con ${a}_{7}$ y ${a}_{8}$. Por lo tanto ${x} = 4$ también hace parte de la respuesta.
+- Sí ${x} = 4$, el primer viaje será con los grupos con ${a_1}$, ${a_2}$ y ${a_3}$, el segundo viaje será con ${a_4}$, ${a_5}$ y ${a_6}$ y finalmente el tercer viaje será con ${a_7}$ y ${a_8}$. Por lo tanto ${x} = 4$ también hace parte de la respuesta.
 
 - Así sucesivamente se deben evaluar las demás posibles opciones para ${x}$. Que en el ejemplo dado la respuesta debe ser **3,4,6,12** como posibles valores de ${x}$.
 
